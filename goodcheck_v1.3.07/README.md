@@ -1,14 +1,10 @@
-# GoodCheck – GoodbyeDPI, Zapret ve ByeDPI için blok kontrol (blockcheck) betiği
+# GoodCheck Türkçe Kullanım Kılavuzu
 
-**Yazar:**  
-Ori
-
-**Lisans:**  
-Ticari olmayan kullanımda, kaynak belirtilmek şartıyla serbesttir.
+GoodbyeDPI, Zapret ve ByeDPI için blok kontrol (blockcheck) betiği
 
 ---
 
-## 🔧 Betiğin Çalışma Prensibi
+## Betiğin Çalışma Prensibi
 
 - `Strategies` klasöründeki metin dosyasından stratejiler alınır.  
 - `Checklists` klasöründeki metin dosyasından kontrol edilecek siteler alınır.  
@@ -18,12 +14,11 @@ Ticari olmayan kullanımda, kaynak belirtilmek şartıyla serbesttir.
 
 ---
 
-## ⚙️ Temel Kurulum Talimatları
+## Temel Kurulum Talimatları
 
 1. Arşivi ayrı bir klasöre çıkarın.  
 2. `Config.cmd` dosyasını Not Defteri ile açın.  
-3. Programların klasör yollarını uygun değişkenlere girin. Örnek:
-
+3. Programların klasör yollarını uygun değişkenlere girin.  
    ```cmd
    set "_gdpiFolderOverride=D:\Soft\GoodbyeDPI\"
    set "_zapretFolderOverride=D:\Soft\Zapret\"

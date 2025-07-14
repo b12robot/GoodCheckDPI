@@ -1,6 +1,3 @@
-# GoodCheckDPI
-GoodbyeDPI with GoodCheck
-
 # GoodbyeDPI Türkçe Kullanım Kılavuzu
 
 goodbyedpi.exe [SEÇENEK...]
