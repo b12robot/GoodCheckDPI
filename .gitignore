@@ -4,5 +4,7 @@
 !.gitignore
 !LICENSE
 !README.md
-!goodbyedpi*
-!goodcheck*
+!goodbyedpi*/
+!goodbyedpi*/**
+!goodcheck*/
+!goodcheck*/**
