@@ -1,0 +1,104 @@
+GoodCheck v1.3.07 Log - Sal_08-07-2025 - 19:45:48
+
+---------------------
+
+Reading external variables...
+
+---------------------
+
+Initial Checks...
+Windows major version: 10
+Checking privilegies...
+Checking up if checklists folder do exist...
+Checking up if strategies folder do exist...
+Checking up if payloads folder do exist...
+Checking up if Curl do exist...
+-----
+curl 8.10.1 (x86_64-w64-mingw32) libcurl/8.10.1 LibreSSL/3.9.2 zlib/1.3.1 brotli/1.1.0 zstd/1.5.6 WinIDN libpsl/0.21.5 libssh2/1.11.0 nghttp2/1.63.0 ngtcp2/1.7.0 nghttp3/1.5.0
+Release-Date: 2024-09-18
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtsp scp sftp smb smbs smtp smtps telnet tftp ws wss
+Features: alt-svc AsynchDNS brotli CAcert HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL SSPI threadsafe UnixSockets zstd
+-----
+Checking up network connectivity...
+Setting up DNS-over-HTTPS resolver...
+Trying "https://one.one.one.one/dns-query"...
+Resolver accessible
+Looking for executables...
+"GoodbyeDPI" is found at "D:\Windows\Links\DPI\GoodbyeDPI\goodbyedpi-0.2.3rc3-turkey\x86_64\goodbyedpi.exe"
+You're using a 64-bit 0.2.3-rc3-2 version. It doesn't have --fake-with-sni support, but supports --fake-from-hex.
+Can't find "Zapret" anywhere...
+Can't find "ByeDPI" anywhere...
+
+---------------------
+
+Script is ready.
+
+Proceeding with "GoodbyeDPI" and "D:\Windows\Links\DPI\GoodCheck\GoodCheck_v1.3.07\Strategies\GoodbyeDPI\discord.txt" strategy list...
+
+-------------------------------
+
+Parsing strategy list...
+
+Curl extra keys found:
+Strategy extra keys found:
+
+Reading strategies (0):  --auto-ttl 1-3-5
+
+-------------------------------
+
+Proceeding with a "D:\Windows\Links\DPI\GoodCheck\GoodCheck_v1.3.07\CheckLists\test sites - turkey - robot.txt" checklist...
+
+-------------------------------
+
+Your cluster codename: turkcell-saw4
+Your Google Cache Server web address: https://rr1---sn-u0g3jxaa-n5fz.googlevideo.com
+
+-------------------------------
+
+Processing checklist...
+
+Skipping TLS 1.2 breakage auto-test
+Site to check: https://rr1---sn-u0g3jxaa-n5fz.googlevideo.com (Your ISPs Google Cache Server)
+Site to check: https://discord.com
+Site to check: https://www.wattpad.com
+Site to check: https://www.roblox.com
+Site to check: https://pornhub.com
+
+Total: 5 sites     Curl timeout: 2 seconds
+
+Proceeding with 1 passes...
+Estimated time for a test: 0 minutes 3 seconds
+
+-------------------------------
+
+Terminating active programs and services...
+
+-------------------------------
+
+Testing (0/0):  --auto-ttl 1-3-5
+Starting up GoodbyeDPI...
+Starting up Curl...
+Waiting for Curl to do it's job...
+Terminating Curl if it's still there...
+Reading results...
+WORKING		https://rr1---sn-u0g3jxaa-n5fz.googlevideo.com[ip:176.88.233.141]
+NOT WORKING	https://www.wattpad.com[ip:]
+WORKING		https://pornhub.com[ip:66.254.114.41]
+WORKING		https://discord.com[ip:162.159.138.232]
+WORKING		https://www.roblox.com[ip:128.116.21.3]
+Successes - Pass 1: 4/5
+
+Terminating GoodbyeDPI...
+
+-------------------------------
+
+Strategies with 4 out of 5 successes:
+--auto-ttl 1-3-5
+
+-------------------------------
+
+DNS-over-HTTPS resolver used: "https://one.one.one.one/dns-query"
+
+-------------------------------
+
+Script ended without catched errors
