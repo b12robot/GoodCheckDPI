@@ -5,23 +5,23 @@ goodbyedpi.exe [SEÇENEK...]
 ## Paket Gönderimi ve Parçalama
 
 **-q**  
-QUIC/HTTP3 trafiğini engeller, QUIC engellenirse HTTP/2’ye geri döner.  
+QUIC/HTTP3 trafiğini engeller, QUIC/HTTP3 engellenirse tarayıcı HTTP/2’ye geri döner.  
 GoodbyeDPI TCP tabanlı HTTP/1.1 ve HTTP/2 protokolleriyle daha iyi çalışır.
 
 **-p**  
-Pasif DPI sistemlerini kandırmak için bağlantının başında boş/anlamsız TCP paketi gönderir.
+Pasif DPI sistemlerinin oluşturduğu HTTP 302 (Yönlendirme) ve TCP RST paketlerini engeller.
 
 **-f \<sayı\>**  
 HTTP paketlerini belirtilen boyutta parçalar halinde gönderir.  
 `-f 2 → 2 baytlık parçalar halinde.`
 
 **-k \<sayı\>**  
-HTTP Keep-Alive paketlerini belirtilen boyutta parçalar halinde gönderir.
-**-f** ile birlikte kullanılması önerilir.  
+HTTP Keep-Alive paketlerini belirtilen boyutta parçalar halinde gönderir.  
+**-f** parametresi ile birlikte kullanılması önerilir.  
 `-k 2 → 2 baytlık parçalar halinde.`
 
 **-n**  
-ACK (Onay) paketini beklemeden HTTP isteği gönderir. (Daha hızlı ama kararsız)  
+ACK (Onay) paketini beklemeden HTTP isteği gönderir. (Daha hızlı ama kararsız.)  
 Sadece **-k** parametresi ile birlikte kullanılabilir.
 
 **-e \<sayı\>**  
@@ -30,7 +30,7 @@ HTTPS paketlerini belirtilen boyutta parçalar halinde gönderir.
 
 ---
 
-## HTTP Başlık ve İstek Modifikasyonları
+## HTTP Başlık ve İstek Manipülasyonları
 
 **-r**  
 Host başlığı adındaki harfleri rastgele büyük/küçük harfe çevirir.  
@@ -47,11 +47,12 @@ Host başlığı ile değeri arasındaki boşluğu kaldırır.
 **-a**  
 Method ve URI arasında ekstra boşluk ekler.  
 Otomatik **-s** parametresini etkinleştirir.  
+Siteleri bozabilir, **--blacklist** parametresi ile birlikte kullanılması önerilir.  
 `GET /index.html HTTP/1.1 → GET  /index.html HTTP/1.1`
 
 ---
 
-## Anormal TCP Paketleri
+## Gelişmiş TCP Fragmentasyonu
 
 **--wrong-chksum**  
 TCP checksum’ı bilerek yanlış olan sahte HTTP paketi gönderir.
@@ -65,37 +66,40 @@ TCP paketlerini küçük parçalara bölerek gönderir.
 **--reverse-frag**  
 TCP paketlerini küçük parçalara bölerek ters sırayla gönderir.
 
+**--frag-by-sni**  
+SNI değeri gönderilmeden hemen önce TCP paketini parçalara ayırır.
+
 ---
 
-## TTL ile Filtre Atlama Teknikleri
+## TTL (Time To Live) Tabanlı Atlatma Teknikleri
 
 **--set-ttl \<sayı\>**  
 Belirtilen TTL değeriyle sahte HTTP paketi gönderir.  
 Siteleri bozabilir, **--blacklist** parametresi ile birlikte kullanılması önerilir.  
 `--set-ttl 3`
 
-**--auto-tt \<a1-a2-m\>** (varsayılan: 1-4-10)  
-Hedef uzaklığına göre TTL hesaplayıp sahte paketi bu TTL ile gönderir.  
+**--auto-ttl \<a1-a2-m\>** (Varsayılan: 1-4-10)  
+Hedefin uzaklığına göre TTL hesaplayıp sahte paketi bu TTL ile gönderir.  
 
 - **a1** →  Uzak hedefler için TTL değerinden en az ne kadar düşürüleceğini belirler.  
 - **a2** → Yakın hedefler için TTL değerinden sabit olarak ne kadar düşürüleceğini belirler.  
-- **m**  → TTL'nin ulaşabileceği maksimum değeri belirler; bu değerden büyük olamaz.  
+- **m**  → TTL'nin ulaşabileceği maksimum değeri belirler, TTL bu değerden büyük olamaz.  
 
 Otomatik **--min-ttl 3** parametresini etkinleştirir.  
 Siteleri bozabilir, **--blacklist** parametresi ile birlikte kullanılması önerilir.  
-`--auto-tt 1-4-10`
+`--auto-ttl 1-4-10`
 
 **--min-ttl \<sayı\>**  
-TTL mesafesi bu sayıdan küçükse sahte paket gönderilmez.  
-Sadece **--set-ttl** ve **--auto-ttl** ile kullanılabilir.  
-`--min-ttl 3`
+TTL mesafesi belirtilen sayıdan küçükse sahte paket gönderilmez.  
+Sadece **--set-ttl** ve **--auto-ttl** parametreleri ile kullanılabilir.  
+`--set-ttl 3 --min-ttl 3`
 
 ---
 
 ## Sahte Paket Üretimi
 
 **--fake-gen \<sayı\>**  
-DPI’yı şaşırtmak için belirtilen sayıda rastgele sahte TCP paketi üretir.  
+Belirtilen sayıda rastgele sahte TCP paketi üretir.  
 `--fake-gen 3`
 
 **--fake-with-sni \<alan adı\>**  
@@ -103,72 +107,83 @@ Verilen alan adıyla Firefox 130 benzeri sahte TLS ClientHello paketi oluşturur
 Bu seçenek birden fazla kez kullanılabilir.  
 `--fake-with-sni example.com`
 
-**--fake-from-hex \<hex\>**   
-Sahte paketi doğrudan hexadecimal veriyle oluşturur.
+**--fake-from-hex \<hex\>**  
+Sahte paketi doğrudan hexadecimal veriyle oluşturur.  
 Bu seçenek birden fazla kez kullanılabilir.  
 `--fake-from-hex 1603030135010001310303424143facf5c983ac8ff20b819cfd634cbf4`
 
-**--fake-resend \<sayı\>** (varsayılan: 1)  
-Her sahte paketi belirtilen sayıda tekrar gönderir.  
-Sadece **--fake-gen**, **--fake-with-sni** ve **--fake-from-hex** ile kullanılabilir.  
+**--fake-resend \<sayı\>** (Varsayılan: 1)  
+Her sahte paketi belirtilen sayıda tekrar gönderir, tüm sahte paket parametrelerine uygulanır.  
+Sadece **--fake-gen**, **--fake-with-sni** ve **--fake-from-hex** parametreleri ile kullanılabilir.  
 `--fake-gen 3 --fake-resend 4`
 
 ---
 
 ## DNS Yönlendirme
 
-**--dns-addr \<dns\>**  
-UDP üzerinden yapılan DNS isteklerini belirtilen IPv4 adresine yönlendirir. (deneysel)  
+**--dns-addr \<dns\>** (Deneysel)  
+UDP üzerinden yapılan DNS isteklerini belirtilen IPv4 adresine yönlendirir.  
 `--dns-addr 1.1.1.1`
 
-**--dns-port \<port\>** (varsayılan: 53)  
+**--dns-port \<port\>** (Varsayılan: 53)  
 DNS yönlendirmesi için kullanılacak IPv4 portunu belirtir.  
 Sadece **--dns-addr** parametresi ile birlikte kullanılabilir.  
 `--dns-addr 1.1.1.1 --dns-port 53`
 
-**--dnsv6-addr \<dns\>**  
-UDP üzerinden yapılan DNS isteklerini belirtilen IPv6 adresine yönlendirir. (deneysel)  
+**--dnsv6-addr \<dns\>** (Deneysel)  
+UDP üzerinden yapılan DNS isteklerini belirtilen IPv6 adresine yönlendirir.  
 `--dnsv6-addr 2606:4700:4700::1111`
 
-**--dnsv6-port \<port\>** (varsayılan: 53)  
+**--dnsv6-port \<port\>** (Varsayılan: 53)  
 DNS yönlendirmesi için kullanılacak IPv6 portunu belirtir.  
 Sadece **--dnsv6-addr** parametresi ile birlikte kullanılabilir.  
 `--dnsv6-addr 2606:4700:4700::1111 --dnsv6-port 53`
 
 **--dns-verb**  
 DNS işlemleri hakkında detaylı bilgi gösterir.  
-Sadece **--dns-addr** ve **--dnsv6-addr** ile birlikte kullanılabilir.
+Sadece **--dns-addr** ve **--dnsv6-addr** ile birlikte kullanılabilir.  
+`--dns-addr 1.1.1.1 --dns-verb`
 
 ---
 
 ## Alan Adı ve Port Filtreleme
 
 **--blacklist \<dosya.txt\>**  
-Sadece listedeki sitelerde DPI atlatması yapar.  
+Sadece listedeki sitelere DPI atlatması uygulanır, alt alan adları ayrı olarak girilmesi gerekir.  
+Bu seçenek birden fazla kez kullanılabilir.  
 `--blacklist blacklist.txt`
+
+**--allow-no-sni**  
+SNI algılanamazsa normalde DPI atlatması yapılmaz, etkinleştirildiğinde SNI tespit edilemese bile DPI atlatması uygulanır.  
+Sadece **--blacklist** parametresi ile birlikte kullanılabilir.  
+`--blacklist blacklist.txt --allow-no-sni`
 
 **--ip-id \<id\>**  
 Belirtilen IP-ID’ye sahip TCP RST/yönlendirmeyi engeller.  
+Bu seçenek birden fazla kez kullanılabilir.  
 `--ip-id 54321`
 
 **--port \<port\>**  
-Ek TCP portu ekler.  
+Belirtilen TCP portunda **-f, -k, -e** gibi paket parçalama parametrelerini uygular.  
+Bu seçenek birden fazla kez kullanılabilir.  
 `--port 8080`
 
 **-w**  
-Sadece 80 portu yerine tüm portlarda HTTP trafiği arar.  
-**--port** parametresi ile aranacak portlar eklenebilir.
+Varsayılan 80 numaralı porta ek olarak **--port** parametresi ile eklenen tüm portlarda **-r, -m, -s, -a** gibi HTTP başlık ve istek modifikasyonlarını uygular.  
+**--port** parametresi ile birlikte kullanılması önerilir.  
+`--port 8080 -w`
 
 ---
 
 ## Optimizasyon Parametreleri
 
-**--max-payload** (varsayılan: 1200)  
-TCP yükü bu değerden büyük paketleri analiz etmez.
+**--max-payload \<bayt\>** (varsayılan: 1200)  
+Belirtilen değerden büyük paketlere DPI atlatma uygulanmaz.  
+`--max-payload 1200`
 
 ---
 
-## Uyumsuz Parametreler
+## Uyumsuz Parametreler - Birlikte kullanmayın!
 
 - **--native-frag** ve **--reverse-frag**  
 - **--set-ttl** ve **--auto-ttl**  
