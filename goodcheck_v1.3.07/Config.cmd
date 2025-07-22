@@ -3,7 +3,7 @@ chcp 1251
 ::============================================CONFIG============================================
 
 ::Program folders can be set up here; leave empty to search in current folder
-set "_gdpiFolderOverride="
+set "_gdpiFolderOverride=../goodbyedpi-0.2.3rc3-2/"
 set "_zapretFolderOverride="
 set "_ciaFolderOverride="
 
