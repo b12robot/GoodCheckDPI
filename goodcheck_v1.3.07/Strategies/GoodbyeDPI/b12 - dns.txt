@@ -1,0 +1,7 @@
+/First 2 uncommented lines are reserved, DO NOT REMOVE
+/You can use FAKEHEX and FAKESNI for automatic substitution in the script
+/
+_strategyCurlExtraKeys#
+_strategyExtraKeys#
+/
+/=======B12 Tests=======
