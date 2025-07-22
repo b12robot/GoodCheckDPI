@@ -1,25 +1,28 @@
 # GoodCheck Türkçe Kullanım Kılavuzu
 
-GoodbyeDPI, Zapret ve ByeDPI için blok kontrol (blockcheck) betiği
+GoodbyeDPI, Zapret ve ByeDPI gibi engel aşma araçlarının farklı ayarlarla ne kadar etkili çalıştığını test eden bir engel tespit (blockcheck) betiğidir.
 
 ---
 
 ## Betiğin Çalışma Prensibi
 
-- `Strategies` klasöründeki metin dosyasından stratejiler alınır.  
-- `Checklists` klasöründeki metin dosyasından kontrol edilecek siteler alınır.  
-- Seçilen engel aşma programı (GoodbyeDPI, Zapret veya ByeDPI) her stratejiyle sırayla çalıştırılır.  
-- Her siteye paralel olarak `curl` ile istek gönderilir. Eğer yanıt alınırsa, siteye erişim vardır.  
-- Sonuçlar analiz edilir ve sıralanır. Ayrıntılar `Logs` klasöründeki log dosyalarında görülebilir.
+- Kullanılacak engel aşma programı (GoodbyeDPI, Zapret veya ByeDPI) seçilir. Gerekirse **Config.cmd** dosyasından bu programın klasör yolu belirtilmelidir.
+
+- **Strategies** klasöründeki seçilen metin dosyasından parametre kombinasyonları alınır.
+
+- **Checklists** klasöründeki seçilen metin dosyasından kontrol edilecek siteler alınır.
+
+- Seçilen strateji dosyasındaki parametreler sırayla seçilen engel aşma programı ile çalıştırılır ve seçilen kontrol listesindeki her siteye **Curl** ile istek gönderilir. Eğer yanıt alınırsa, siteye erişim vardır.
+
+- Sonuçlar analiz edilir ve en çok sitede işe yarayan kombinasyonlar sıralanır. Ayrıntılar **Logs** klasöründeki log dosyalarında görülebilir.
 
 ---
 
 ## Temel Kurulum Talimatları
 
-1. Arşivi ayrı bir klasöre çıkarın.  
-2. `Config.cmd` dosyasını Not Defteri ile açın.  
-3. Programların klasör yollarını uygun değişkenlere girin.  
+`Config.cmd` dosyasını Not Defteri ile açın.  
+Kullanmak istediğiniz programların klasör yollarını uygun değişkenlere girin.
    ```cmd
-   set "_gdpiFolderOverride=D:\Soft\GoodbyeDPI\"
-   set "_zapretFolderOverride=D:\Soft\Zapret\"
-   set "_ciaFolderOverride=D:\Soft\ByeDPI\"
+   set "_gdpiFolderOverride=C:\Soft\GoodbyeDPI\"
+   set "_zapretFolderOverride=C:\Soft\Zapret\"
+   set "_ciaFolderOverride=C:\Soft\ByeDPI\"
