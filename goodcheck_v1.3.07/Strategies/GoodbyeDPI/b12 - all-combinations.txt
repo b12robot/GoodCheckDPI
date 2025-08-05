@@ -1,0 +1,198 @@
+/First 2 uncommented lines are reserved, DO NOT REMOVE
+/You can use FAKEHEX and FAKESNI for automatic substitution in the script
+/
+_strategyCurlExtraKeys#
+_strategyExtraKeys#--max-payload
+/
+/=======B12 Tests=======
+-f 2 -e 2
+--native-frag
+--reverse-frag
+--wrong-seq
+--wrong-chksum
+--frag-by-sni
+--set-ttl 3
+--set-ttl 4
+--set-ttl 5
+-f 2 -e 2 --native-frag
+-f 2 -e 2 --reverse-frag
+-f 2 -e 2 --wrong-seq
+-f 2 -e 2 --wrong-chksum
+-f 2 -e 2 --frag-by-sni
+-f 2 -e 2 --set-ttl 3
+-f 2 -e 2 --set-ttl 4
+-f 2 -e 2 --set-ttl 5
+--native-frag --wrong-seq
+--native-frag --wrong-chksum
+--native-frag --frag-by-sni
+--native-frag --set-ttl 3
+--native-frag --set-ttl 4
+--native-frag --set-ttl 5
+--reverse-frag --wrong-seq
+--reverse-frag --wrong-chksum
+--reverse-frag --frag-by-sni
+--reverse-frag --set-ttl 3
+--reverse-frag --set-ttl 4
+--reverse-frag --set-ttl 5
+--wrong-seq --wrong-chksum
+--wrong-seq --frag-by-sni
+--wrong-seq --set-ttl 3
+--wrong-seq --set-ttl 4
+--wrong-seq --set-ttl 5
+--wrong-chksum --frag-by-sni
+--wrong-chksum --set-ttl 3
+--wrong-chksum --set-ttl 4
+--wrong-chksum --set-ttl 5
+--frag-by-sni --set-ttl 3
+--frag-by-sni --set-ttl 4
+--frag-by-sni --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-seq
+-f 2 -e 2 --native-frag --wrong-chksum
+-f 2 -e 2 --native-frag --frag-by-sni
+-f 2 -e 2 --native-frag --set-ttl 3
+-f 2 -e 2 --native-frag --set-ttl 4
+-f 2 -e 2 --native-frag --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-seq
+-f 2 -e 2 --reverse-frag --wrong-chksum
+-f 2 -e 2 --reverse-frag --frag-by-sni
+-f 2 -e 2 --reverse-frag --set-ttl 3
+-f 2 -e 2 --reverse-frag --set-ttl 4
+-f 2 -e 2 --reverse-frag --set-ttl 5
+-f 2 -e 2 --wrong-seq --wrong-chksum
+-f 2 -e 2 --wrong-seq --frag-by-sni
+-f 2 -e 2 --wrong-seq --set-ttl 3
+-f 2 -e 2 --wrong-seq --set-ttl 4
+-f 2 -e 2 --wrong-seq --set-ttl 5
+-f 2 -e 2 --wrong-chksum --frag-by-sni
+-f 2 -e 2 --wrong-chksum --set-ttl 3
+-f 2 -e 2 --wrong-chksum --set-ttl 4
+-f 2 -e 2 --wrong-chksum --set-ttl 5
+-f 2 -e 2 --frag-by-sni --set-ttl 3
+-f 2 -e 2 --frag-by-sni --set-ttl 4
+-f 2 -e 2 --frag-by-sni --set-ttl 5
+--native-frag --wrong-seq --wrong-chksum
+--native-frag --wrong-seq --frag-by-sni
+--native-frag --wrong-seq --set-ttl 3
+--native-frag --wrong-seq --set-ttl 4
+--native-frag --wrong-seq --set-ttl 5
+--native-frag --wrong-chksum --frag-by-sni
+--native-frag --wrong-chksum --set-ttl 3
+--native-frag --wrong-chksum --set-ttl 4
+--native-frag --wrong-chksum --set-ttl 5
+--native-frag --frag-by-sni --set-ttl 3
+--native-frag --frag-by-sni --set-ttl 4
+--native-frag --frag-by-sni --set-ttl 5
+--reverse-frag --wrong-seq --wrong-chksum
+--reverse-frag --wrong-seq --frag-by-sni
+--reverse-frag --wrong-seq --set-ttl 3
+--reverse-frag --wrong-seq --set-ttl 4
+--reverse-frag --wrong-seq --set-ttl 5
+--reverse-frag --wrong-chksum --frag-by-sni
+--reverse-frag --wrong-chksum --set-ttl 3
+--reverse-frag --wrong-chksum --set-ttl 4
+--reverse-frag --wrong-chksum --set-ttl 5
+--reverse-frag --frag-by-sni --set-ttl 3
+--reverse-frag --frag-by-sni --set-ttl 4
+--reverse-frag --frag-by-sni --set-ttl 5
+--wrong-seq --wrong-chksum --frag-by-sni
+--wrong-seq --wrong-chksum --set-ttl 3
+--wrong-seq --wrong-chksum --set-ttl 4
+--wrong-seq --wrong-chksum --set-ttl 5
+--wrong-seq --frag-by-sni --set-ttl 3
+--wrong-seq --frag-by-sni --set-ttl 4
+--wrong-seq --frag-by-sni --set-ttl 5
+--wrong-chksum --frag-by-sni --set-ttl 3
+--wrong-chksum --frag-by-sni --set-ttl 4
+--wrong-chksum --frag-by-sni --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum
+-f 2 -e 2 --native-frag --wrong-seq --frag-by-sni
+-f 2 -e 2 --native-frag --wrong-seq --set-ttl 3
+-f 2 -e 2 --native-frag --wrong-seq --set-ttl 4
+-f 2 -e 2 --native-frag --wrong-seq --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-chksum --frag-by-sni
+-f 2 -e 2 --native-frag --wrong-chksum --set-ttl 3
+-f 2 -e 2 --native-frag --wrong-chksum --set-ttl 4
+-f 2 -e 2 --native-frag --wrong-chksum --set-ttl 5
+-f 2 -e 2 --native-frag --frag-by-sni --set-ttl 3
+-f 2 -e 2 --native-frag --frag-by-sni --set-ttl 4
+-f 2 -e 2 --native-frag --frag-by-sni --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum
+-f 2 -e 2 --reverse-frag --wrong-seq --frag-by-sni
+-f 2 -e 2 --reverse-frag --wrong-seq --set-ttl 3
+-f 2 -e 2 --reverse-frag --wrong-seq --set-ttl 4
+-f 2 -e 2 --reverse-frag --wrong-seq --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-chksum --frag-by-sni
+-f 2 -e 2 --reverse-frag --wrong-chksum --set-ttl 3
+-f 2 -e 2 --reverse-frag --wrong-chksum --set-ttl 4
+-f 2 -e 2 --reverse-frag --wrong-chksum --set-ttl 5
+-f 2 -e 2 --reverse-frag --frag-by-sni --set-ttl 3
+-f 2 -e 2 --reverse-frag --frag-by-sni --set-ttl 4
+-f 2 -e 2 --reverse-frag --frag-by-sni --set-ttl 5
+-f 2 -e 2 --wrong-seq --wrong-chksum --frag-by-sni
+-f 2 -e 2 --wrong-seq --wrong-chksum --set-ttl 3
+-f 2 -e 2 --wrong-seq --wrong-chksum --set-ttl 4
+-f 2 -e 2 --wrong-seq --wrong-chksum --set-ttl 5
+-f 2 -e 2 --wrong-seq --frag-by-sni --set-ttl 3
+-f 2 -e 2 --wrong-seq --frag-by-sni --set-ttl 4
+-f 2 -e 2 --wrong-seq --frag-by-sni --set-ttl 5
+-f 2 -e 2 --wrong-chksum --frag-by-sni --set-ttl 3
+-f 2 -e 2 --wrong-chksum --frag-by-sni --set-ttl 4
+-f 2 -e 2 --wrong-chksum --frag-by-sni --set-ttl 5
+--native-frag --wrong-seq --wrong-chksum --frag-by-sni
+--native-frag --wrong-seq --wrong-chksum --set-ttl 3
+--native-frag --wrong-seq --wrong-chksum --set-ttl 4
+--native-frag --wrong-seq --wrong-chksum --set-ttl 5
+--native-frag --wrong-seq --frag-by-sni --set-ttl 3
+--native-frag --wrong-seq --frag-by-sni --set-ttl 4
+--native-frag --wrong-seq --frag-by-sni --set-ttl 5
+--native-frag --wrong-chksum --frag-by-sni --set-ttl 3
+--native-frag --wrong-chksum --frag-by-sni --set-ttl 4
+--native-frag --wrong-chksum --frag-by-sni --set-ttl 5
+--reverse-frag --wrong-seq --wrong-chksum --frag-by-sni
+--reverse-frag --wrong-seq --wrong-chksum --set-ttl 3
+--reverse-frag --wrong-seq --wrong-chksum --set-ttl 4
+--reverse-frag --wrong-seq --wrong-chksum --set-ttl 5
+--reverse-frag --wrong-seq --frag-by-sni --set-ttl 3
+--reverse-frag --wrong-seq --frag-by-sni --set-ttl 4
+--reverse-frag --wrong-seq --frag-by-sni --set-ttl 5
+--reverse-frag --wrong-chksum --frag-by-sni --set-ttl 3
+--reverse-frag --wrong-chksum --frag-by-sni --set-ttl 4
+--reverse-frag --wrong-chksum --frag-by-sni --set-ttl 5
+--wrong-seq --wrong-chksum --frag-by-sni --set-ttl 3
+--wrong-seq --wrong-chksum --frag-by-sni --set-ttl 4
+--wrong-seq --wrong-chksum --frag-by-sni --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --frag-by-sni
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --set-ttl 3
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --set-ttl 4
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-seq --frag-by-sni --set-ttl 3
+-f 2 -e 2 --native-frag --wrong-seq --frag-by-sni --set-ttl 4
+-f 2 -e 2 --native-frag --wrong-seq --frag-by-sni --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-chksum --frag-by-sni --set-ttl 3
+-f 2 -e 2 --native-frag --wrong-chksum --frag-by-sni --set-ttl 4
+-f 2 -e 2 --native-frag --wrong-chksum --frag-by-sni --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --frag-by-sni
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --set-ttl 3
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --set-ttl 4
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-seq --frag-by-sni --set-ttl 3
+-f 2 -e 2 --reverse-frag --wrong-seq --frag-by-sni --set-ttl 4
+-f 2 -e 2 --reverse-frag --wrong-seq --frag-by-sni --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-chksum --frag-by-sni --set-ttl 3
+-f 2 -e 2 --reverse-frag --wrong-chksum --frag-by-sni --set-ttl 4
+-f 2 -e 2 --reverse-frag --wrong-chksum --frag-by-sni --set-ttl 5
+-f 2 -e 2 --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 3
+-f 2 -e 2 --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 4
+-f 2 -e 2 --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 5
+--native-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 3
+--native-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 4
+--native-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 5
+--reverse-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 3
+--reverse-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 4
+--reverse-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 5
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 3
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 4
+-f 2 -e 2 --native-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 5
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 3
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 4
+-f 2 -e 2 --reverse-frag --wrong-seq --wrong-chksum --frag-by-sni --set-ttl 5
