@@ -51,6 +51,9 @@ for ($len = 1; $len -le $maxLen; $len++) {
     }
 }
 
+Write-Host " "
+Write-Host "Extra:"
+Write-Host "-q"
 Write-Host "--max-payload"
 Write-Host "--dns-addr 1.1.1.1 --dnsv6-addr 2606:4700:4700::1111"
 Write-Host "--dns-addr 8.8.8.8 --dnsv6-addr 2001:4860:4860::8888"
@@ -58,7 +61,6 @@ Write-Host "--dns-addr 9.9.9.9 --dnsv6-addr 2620:fe::fe"
 Write-Host "--dns-addr 94.140.14.14 --dnsv6-addr 2a10:50c0::ad1:ff"
 Write-Host "--dns-addr 208.67.222.222 --dnsv6-addr 2620:119:35::35"
 Write-Host "--dns-addr 77.88.8.8 --dnsv6-addr 2a02:6b8::feed:0ff"
-Write-Host "-q"
 
 pause
 
