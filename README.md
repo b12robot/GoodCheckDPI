@@ -31,4 +31,6 @@ GoodCheck, GoodbyeDPI yapılandırmalarının çeşitli **kombinasyonlarını si
 GoodCheck aracılığıyla farklı GoodbyeDPI parametre kombinasyonlarını test edin. En iyi çalışan yapılandırmayı belirleyin. İsterseniz GoodCombinations ile kendi kombinasyonlarınızı oluşturabilirsiniz.
 
 **GoodbyeDPI ile Uygulayın:**  
-GoodCheck ile belirlediğiniz en etkili kombinasyonu GoodbyeDPI aracına aktararak aktif olarak kullanmaya başlayın.
+GoodCheck ile belirlediğiniz en etkili kombinasyonu GoodbyeDPI aracına aktararak kullanmaya başlayın.
+
+*GoodbyeDPI alternatifi olarak [hufrea/byedpi](https://github.com/hufrea/byedpi) veya [bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle) kullanılabilir. GoodCheck bu araçları da destekler.*
