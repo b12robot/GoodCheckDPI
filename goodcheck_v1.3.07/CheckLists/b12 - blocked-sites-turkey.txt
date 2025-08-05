@@ -4,7 +4,10 @@
 /
 /
 /===Some blocked sites in Turkey===
+discord.gg
 discord.com
-www.wattpad.com
-www.roblox.com
+discordapp.com
+discordapp.net
+roblox.com
+wattpad.com
 pornhub.com
