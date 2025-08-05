@@ -35,8 +35,8 @@ function Invoke-ServiceControl {
 # Set architecture and paths
 $Arch = if ([Environment]::Is64BitOperatingSystem) { 'x86_64' } else { 'x86' }
 $DPIPath = "$PSScriptRoot\$Arch\goodbyedpi.exe"
-$DPIArgs = '--set-ttl 3'
-$BinPath = "`"`"`"$DPIPath`"`"`" $DPIArgs"
+$DPIArgs = "--set-ttl 3"
+$BinPath = "`"`"`"$DPIPath`"`"`" $DPIArgs --blacklist `"`"`"$PSScriptRoot\turkey-blacklist.txt`"`"`""
 $SCDesc = 'GoodbyeDPI intercepts and modifies DPI-based traffic at kernel level using WinDivert.'
 
 # Ensure the executable exists
