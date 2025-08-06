@@ -33,4 +33,8 @@ GoodCheck aracılığıyla farklı GoodbyeDPI parametre kombinasyonlarını test
 **GoodbyeDPI ile Uygulayın:**  
 GoodCheck ile belirlediğiniz en etkili kombinasyonu GoodbyeDPI aracına aktararak kullanmaya başlayın.
 
-*GoodbyeDPI alternatifi olarak [hufrea/byedpi](https://github.com/hufrea/byedpi) veya [bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle) kullanılabilir. GoodCheck bu araçları da destekler.*
+---
+
+## Alternatif Araçlar
+
+*GoodbyeDPI alternatifi olarak [hufrea/byedpi](https://github.com/hufrea/byedpi) veya [bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle) gibi araçlar kullanılabilir. Her iki araç da DPI engellemelerini aşmada etkilidir ve GoodCheck ile parametre kombinasyonları test edilebilir. VPN tabanlı bir çözüm arayanlar için ise [cagritaskn/SplitWire-Turkey](https://github.com/cagritaskn/SplitWire-Turkey) kullanılabilir.*
