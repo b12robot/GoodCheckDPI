@@ -1,29 +1,30 @@
 @echo off
 title Run GoodbyeDPI
-chcp 65001 >nul 2>&1
 
-:: Yönetici yetkilerini kontrol et
+:: Check for administrator privileges
 net session >nul 2>&1
 if %errorlevel% NEQ 0 (
-    echo GoodbyeDPI, çekirdek seviyesinde bir sürücü ^(WinDivert^) kullandığı için yönetici yetkileri gereklidir.
+    echo GoodbyeDPI requires administrator privileges because it uses a kernel-level driver ^(WinDivert^).
     powershell -Command "Start-Process -FilePath '%~f0' -Verb runAs" || (
-        echo Yönetici izni reddedildi veya bir hata oluştu.
+        echo Administrator permission denied or an error occurred.
         pause
         exit /b
     )
     exit /b
 )
+pushd "%~dp0"
 
-:: Mimariyi kontrol et
-if "%PROCESSOR_ARCHITECTURE%" EQU "AMD64" (
+:: Check system architecture
+if "%Processor_Architecture%" EQU "AMD64" (
     set "arch=x86_64"
 ) else (
     set "arch=x86"
 )
 
-pushd "%~dp0%arch%"
+:: Configuration Variables
+set "GoodbyeDPIPath=%~dp0%arch%\goodbyedpi.exe"
+set "Arguments=--set-ttl 3"
 
-:: GoodbyeDPI çalıştır
-start "GoodbyeDPI" goodbyedpi.exe --set-ttl 3
-
+:: Run GoodbyeDPI
+start "GoodbyeDPI" "%GoodbyeDPIPath%" %Arguments%
 exit

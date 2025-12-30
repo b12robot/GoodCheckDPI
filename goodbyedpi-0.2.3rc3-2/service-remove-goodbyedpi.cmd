@@ -1,20 +1,20 @@
 @echo off
 title Remove GoodbyeDPI Service
-chcp 65001 >nul 2>&1
 
-:: Yönetici yetkilerini kontrol et
+:: Check for administrator privileges
 net session >nul 2>&1
 if %errorlevel% NEQ 0 (
-    echo GoodbyeDPI hizmetini silmek için yönetici yetkileri gereklidir.
+    echo Administrator privileges are required to remove the GoodbyeDPI service.
     powershell -Command "Start-Process -FilePath '%~f0' -Verb runAs" || (
-        echo Yönetici izni reddedildi veya bir hata oluştu.
+        echo Administrator permission denied or an error occurred.
         pause
         exit /b
     )
     exit /b
 )
+pushd "%~dp0"
 
-:: GoodbyeDPI hizmetini sil
+:: Remove GoodbyeDPI service
 sc stop "GoodbyeDPI"
 sc delete "GoodbyeDPI"
 sc stop "WinDivert"

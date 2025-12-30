@@ -1,33 +1,39 @@
 @echo off
 title Install GoodbyeDPI Service (Blacklist)
-chcp 65001 >nul 2>&1
 
-:: Yönetici yetkilerini kontrol et
+:: Check for administrator privileges
 net session >nul 2>&1
 if %errorlevel% NEQ 0 (
-    echo GoodbyeDPI, çekirdek seviyesinde bir sürücü ^(WinDivert^) kullandığı için yönetici yetkileri gereklidir.
+    echo GoodbyeDPI requires administrator privileges because it uses a kernel-level driver ^(WinDivert^).
     powershell -Command "Start-Process -FilePath '%~f0' -Verb runAs" || (
-        echo Yönetici izni reddedildi veya bir hata oluştu.
+        echo Administrator permission denied or an error occurred.
         pause
         exit /b
     )
     exit /b
 )
+pushd "%~dp0"
 
-:: Mimariyi kontrol et
-if "%PROCESSOR_ARCHITECTURE%" EQU "AMD64" (
+:: Check system architecture
+if "%Processor_Architecture%" EQU "AMD64" (
     set "arch=x86_64"
 ) else (
     set "arch=x86"
 )
 
-pushd "%~dp0"
+:: Configuration Variables
+set "GoodbyeDPIPath=%~dp0%arch%\goodbyedpi.exe"
+set "BlacklistPath=%~dp0turkey-blacklist.txt"
+set "Arguments=--set-ttl 3"
 
-:: GoodbyeDPI hizmetini oluştur
-sc stop "GoodbyeDPI"
-sc delete "GoodbyeDPI"
-sc create "GoodbyeDPI" binPath= "\"%~dp0%arch%\goodbyedpi.exe\" --blacklist \"%~dp0turkey-blacklist.txt\" --set-ttl 3" start= auto
-sc description "GoodbyeDPI" "GoodbyeDPI, DPI tabanlı sansürü atlatmak için trafik paketlerini çekirdek seviyesinde yakalayıp değiştiren açık kaynaklı bir araçtır. WinDivert sürücüsü ile IP/TCP paketlerini sistemin işleyişine müdahale etmeden modifiye eder."
+:: Construct full binary path
+set "FullBinPath="\"%GoodbyeDPIPath%\" --blacklist \"%BlacklistPath%\" %Arguments%""
+
+:: Create GoodbyeDPI service
+sc stop "GoodbyeDPI" >nul 2>&1
+sc delete "GoodbyeDPI" >nul 2>&1
+sc create "GoodbyeDPI" binPath= %FullBinPath% start= auto
+sc description "GoodbyeDPI" "An open-source tool that intercepts and modifies traffic packets at the kernel level to bypass DPI-based censorship."
 sc start "GoodbyeDPI"
 
 pause
