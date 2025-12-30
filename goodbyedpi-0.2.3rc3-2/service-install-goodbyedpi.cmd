@@ -23,7 +23,7 @@ if "%Processor_Architecture%" EQU "AMD64" (
 
 :: Configuration Variables
 set "GoodbyeDPIPath=%~dp0%arch%\goodbyedpi.exe"
-set "Arguments=--set-ttl 3"
+set "Arguments=--max-payload --set-ttl 3"
 
 :: Construct full binary path
 set "FullBinPath="\"%GoodbyeDPIPath%\" %Arguments%""
